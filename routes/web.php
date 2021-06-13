@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+// return view('index');
+// });
+
+Route::get('/', 'App\Http\Controllers\PagesController@home');
+Route::get('/about', 'App\Http\Controllers\PagesController@about');
+
+//menampilkan semua data
+Route::get('/customers', 'App\Http\Controllers\CustomersController@index');
+//membuat dan menampilkan data
+Route::get('/customers/create', 'App\Http\Controllers\CustomersController@create');
+Route::get('/customers/{customers}', 'App\Http\Controllers\CustomersController@show');
+//memasukkan data ke database
+Route::post('/customers', 'App\Http\Controllers\CustomersController@store');
