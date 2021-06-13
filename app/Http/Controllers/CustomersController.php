@@ -88,6 +88,7 @@ class CustomersController extends Controller
     public function edit(customers $customers)
     {
         //
+        return view('customers/edit', compact('customers'));
     }
 
     /**
@@ -99,7 +100,21 @@ class CustomersController extends Controller
      */
     public function update(Request $request, customers $customers)
     {
-        //
+        //validasi input
+        $request->validate([
+            'nama' => 'required',
+            'telp' => 'size:12'
+        ]);
+
+        //edit
+        Customers::where('id', $customers->id)
+            ->update([
+                'nama' => $request->nama,
+                'alamat' => $request->alamat,
+                'telp' => $request->telp,
+                'email' => $request->email,
+            ]);
+        return redirect('/customers')->with('status', 'Data telah diubah!');
     }
 
     /**
@@ -111,5 +126,7 @@ class CustomersController extends Controller
     public function destroy(customers $customers)
     {
         //
+        Customers::destroy($customers->id);
+        return redirect('/customers')->with('state', 'Data telah dihapus!');
     }
 }

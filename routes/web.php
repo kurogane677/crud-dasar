@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomersController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers;
 
@@ -21,10 +22,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\PagesController@home');
 Route::get('/about', 'App\Http\Controllers\PagesController@about');
 
-//menampilkan semua data
+//Simple Routes
+// Route::resource('customers', 'App\Http\Controllers\CustomersController');
+
+
+//Rute tapi ribet gang
+// //menampilkan semua data
 Route::get('/customers', 'App\Http\Controllers\CustomersController@index');
 //membuat dan menampilkan data
 Route::get('/customers/create', 'App\Http\Controllers\CustomersController@create');
 Route::get('/customers/{customers}', 'App\Http\Controllers\CustomersController@show');
 //memasukkan data ke database
 Route::post('/customers', 'App\Http\Controllers\CustomersController@store');
+//Menghapus data
+Route::delete('/customers/{customers}', 'App\Http\Controllers\CustomersController@destroy');
+//mengedit data
+Route::get('/customers/{customers}/edit', 'App\Http\Controllers\CustomersController@edit');
+Route::patch('/customers/{customers}', 'App\Http\Controllers\CustomersController@update');

@@ -17,13 +17,16 @@
                 <div class="alert alert-success">
                     {{session('status') }}
                 </div>
+                @else @if (session('state'))
+                    <div class="alert alert-danger">{{session('state')}}</div>
+                @endif
             @endif
 
             <ul class="list-group">
                 @foreach ($customers as $cs)
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                       {{$cs->nama}}
-                  <a href="customers/{{$cs->id}}" class="badge bg-primary rounded-pill">Details</a>
+                  <a href="/customers/{{$cs->id}}" class="btn btn-primary">Details</a>
                 </li>
                 @endforeach
             </ul>

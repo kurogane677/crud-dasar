@@ -18,9 +18,15 @@
                     <p class="card-text">{{$customers->alamat}}</p>
                     <p class="card-text">{{$customers->email}}</p>
                     
-                    <button type="submit" class="btn btn-primary mx-1">Edit</button>
-                    <button type="submit" class="btn btn-danger mx-1">Delete</button>
-                    <a href="#" class="card-link">Another link</a>
+                    <a  class="btn btn-primary my-1" href="/customers/{{$customers->id}}/edit">Edit</a>
+                    
+                    {{-- validasi agar tidak bisa di akses diluar --}}
+                    <form action="/customers/{{ $customers->id }}" method="POST" class="d-inline">
+                        @method('delete')
+                        @csrf
+                    <button type="submit" class="btn btn-danger my-1">Delete</button>
+                    </form>
+                    <a href="/customers" class="card-link">Kembali</a>
                 </div>
               </div>
         </div>
