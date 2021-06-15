@@ -39,3 +39,7 @@ Route::delete('/customers/{customers}', 'App\Http\Controllers\CustomersControlle
 //mengedit data
 Route::get('/customers/{customers}/edit', 'App\Http\Controllers\CustomersController@edit');
 Route::patch('/customers/{customers}', 'App\Http\Controllers\CustomersController@update');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

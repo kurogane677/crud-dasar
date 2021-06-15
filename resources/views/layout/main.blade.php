@@ -17,17 +17,31 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <!-- <div class="container-fluid"> -->
         <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="{{ url('/') }}">
+            {{ config('app.name', 'Laravel') }}
+        </a>
+            {{-- <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> --}}
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{url('/home')}}">Home</a>
                     <a class="nav-link" href="{{url('/about')}}">About</a>
                     <a class="nav-link" href="{{url('/customers')}}">Customers</a>
                     <!-- </div> -->
+                    
                 </div>
+            </div>
+            <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+                <ul class="navbar-nav text-right">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url('./home')}} ">Login</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url('./register')}}">Register</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
